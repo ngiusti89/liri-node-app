@@ -11,7 +11,6 @@ var spotify = new Spotify(keys.spotify);
 var query = process.argv[2];
 var input = process.argv.slice(3).join(" ");
 
-
 // function telling app which function to run based on user input
 function execute(query) {
     if (query === "concert-this") {
@@ -37,7 +36,6 @@ function concertThis(input) {
             console.log("Venue: " + concert.venue.name)
             console.log("Location: " + concert.venue.city + ", " + concert.venue.region)
             console.log("Date: " + moment(concert.datetime).format("MM/DD/YYYY"))
-            console.log("\n")
         })
     })
 }
