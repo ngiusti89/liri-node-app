@@ -18,7 +18,7 @@ function execute(query) {
         concertThis(input);
     }
     if (query === "spotify-this-song") {
-        spotifyThis(input);
+        spotifyThisSong(input);
     }
     if (query === "movie-this") {
         movieThis(input);
@@ -43,7 +43,7 @@ function concertThis(input) {
 }
 
 // spotify search
-function spotifyThis(input) {
+function spotifyThisSong(input) {
     console.log(input)
     // if no user input, will search for The Sign by Ace of Base
     if (!input) {
@@ -77,7 +77,7 @@ function movieThis() {
         console.log("\n")
         console.log("Title: " + response.data.Title);
         console.log("Year: " + response.data.Year);
-        console.log("IMDB Rating: " + response.data.imdbRating);
+        console.log("IMDB Rating: " + response.data.imdbRating); // also found at response.data.Ratings[0].Value (displayed /10)
         console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
         console.log("Country: " + response.data.Country);
         console.log("Language: " + response.data.Language);
@@ -89,6 +89,14 @@ function movieThis() {
 
 function doWhatItSays() {
     console.log(input)
+    fs.readFile("random.txt", "utf-8", function (error, data) {
+        if (error) {
+            return console.log(error);
+        }
+        var dataArray = data.split(",");
+        input = dataArray[1];
+        spotifyThisSong(input)
+    })
 }
 
 console.log(query);
