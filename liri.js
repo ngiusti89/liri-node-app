@@ -12,34 +12,43 @@ var input = process.argv.slice(3).join(" ");
 
 
 // function telling app which function to run based on user input
-function execute (query) {
+function execute(query) {
     if (query === "concert-this") {
         concertThis(input);
-      }
-      if (query === "spotify-this-song") {
+    }
+    if (query === "spotify-this-song") {
         spotifyThis(input);
-      }
-      if (query === "movie-this") {
+    }
+    if (query === "movie-this") {
         movieThis(input);
-      }
-      if (query === "do-what-it-says") {
+    }
+    if (query === "do-what-it-says") {
         doWhatItSays();
-      }
+    }
 }
 
-function concertThis (input) {
+function concertThis(input) {
     console.log(input);
+    axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(function (response) {
+        
+        response.data.forEach(concert => {
+            console.log("Venue: " + concert.venue.name)
+            console.log("Location: " +concert.venue.city + ", " + concert.venue.region)
+            console.log("Date: " + moment(concert.datetime).format("MM/DD/YYYY"))
+            console.log("\n")
+        })
+    })
 }
 
-function spotifyThis () {
+function spotifyThis() {
     console.log(input)
 }
 
-function movieThis () {
+function movieThis() {
     console.log(input)
 }
 
-function doWhatItSays () {
+function doWhatItSays() {
     console.log(input)
 }
 
