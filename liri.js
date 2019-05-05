@@ -7,6 +7,7 @@ var moment = require("moment");
 var Spotify = require('node-spotify-api');
 var spotify = new Spotify(keys.spotify);
 
+// command line inputs
 var query = process.argv[2];
 var input = process.argv.slice(3).join(" ");
 
@@ -27,10 +28,10 @@ function execute(query) {
     }
 }
 
+// concert search
 function concertThis(input) {
     console.log(input);
     axios.get("https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp").then(function (response) {
-
         response.data.forEach(concert => {
             console.log("\n")
             console.log("Venue: " + concert.venue.name)
@@ -41,9 +42,10 @@ function concertThis(input) {
     })
 }
 
+// spotify search
 function spotifyThis(input) {
     console.log(input)
-    // if no user input, will search for this song
+    // if no user input, will search for The Sign by Ace of Base
     if (!input) {
         input = "The Sign Ace of Base";
     }
@@ -64,8 +66,25 @@ function spotifyThis(input) {
     });
 }
 
+// movie search
 function movieThis() {
     console.log(input)
+    // if no user input, search for Mr. Nobody
+    if (!input) {
+        input = "Mr Nobody"
+    }
+    axios.get("http://www.omdbapi.com/?t=" + input + "&y=&plot=short&apikey=trilogy").then(function (response) {
+        console.log("\n")
+        console.log("Title: " + response.data.Title);
+        console.log("Year: " + response.data.Year);
+        console.log("IMDB Rating: " + response.data.imdbRating);
+        console.log("Rotten Tomatoes Rating: " + response.data.Ratings[1].Value);
+        console.log("Country: " + response.data.Country);
+        console.log("Language: " + response.data.Language);
+        console.log("Plot: " + response.data.Plot);
+        console.log("Actors: " + response.data.Actors);
+        console.log("\n")
+    })
 }
 
 function doWhatItSays() {
