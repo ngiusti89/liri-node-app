@@ -35,6 +35,7 @@ node liri do-what-it-says
 
 ### Spotify
 `node liri spotify-this-song`
+
 <img width="604" alt="spotify-this-song" src="https://user-images.githubusercontent.com/47581041/57189285-a0fa1c00-6ec1-11e9-8caa-323bb189bd88.png">
 
 #### Result
@@ -42,6 +43,7 @@ node liri do-what-it-says
 
 ### Movies
 `node liri movie-this`
+
 <img width="546" alt="movie-this" src="https://user-images.githubusercontent.com/47581041/57189294-ca1aac80-6ec1-11e9-87e1-56c68a3dc368.png">
 
 #### Result
@@ -49,6 +51,7 @@ node liri do-what-it-says
 
 ### Do What It Says
 `node liri do-what-it-says`
+
 <img width="490" alt="do-what-it-says" src="https://user-images.githubusercontent.com/47581041/57189305-f7fff100-6ec1-11e9-9905-78fb3f6a2cd0.png">
 
 #### Result
